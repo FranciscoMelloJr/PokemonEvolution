@@ -1,7 +1,169 @@
 <?xml version="1.0" encoding="UTF-8"?>
-	
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-	
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PrincipalController">
-	<!-- TODO Add Nodes -->
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PrincipalController">
+   <children>
+      <BorderPane prefHeight="840.0" prefWidth="840.0">
+         <top>
+            <HBox prefHeight="50.0" prefWidth="840.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#extrair" prefHeight="25.0" prefWidth="190.0" style="-fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10;" text="Extrair Características da Imagem">
+                     <HBox.margin>
+                        <Insets left="10.0" top="15.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Calibri" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#selecionaImagem" prefHeight="25.0" prefWidth="120.0" style="-fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10;" text="Selecionar Imagem">
+                     <HBox.margin>
+                        <Insets left="10.0" top="15.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Calibri" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#classificar" prefHeight="25.0" prefWidth="70.0" style="-fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10;" text="Classificar">
+                     <HBox.margin>
+                        <Insets left="10.0" top="15.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Calibri" size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </top>
+         <right>
+            <VBox maxHeight="500.0" prefHeight="500.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="250.0" left="5.0" right="10.0" top="5.0" />
+               </BorderPane.margin>
+               <children>
+                  <TitledPane animated="false" text="Caracteristícas">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="125.0" prefWidth="388.0">
+                           <children>
+                              <HBox layoutX="12.0" layoutY="10.0" prefHeight="110.0" prefWidth="360.0">
+                                 <children>
+                                    <VBox prefHeight="160.0" prefWidth="180.0">
+                                       <children>
+                                          <Label text="CHARMELEON">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Label fx:id="meleon1" prefHeight="17.0" prefWidth="150.0" text="Corpo Vermelho:">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Label fx:id="meleon2" prefHeight="17.0" prefWidth="150.0" text="Barriga Bege Claro:">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Label fx:id="b3" prefHeight="17.0" prefWidth="150.0">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="104.0" prefWidth="180.0">
+                                       <children>
+                                          <Label text="CHARIZARD">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Label fx:id="rizard1" prefHeight="17.0" prefWidth="150.0" text="Corpo Laranja:">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Label fx:id="rizard2" prefHeight="17.0" prefWidth="150.0" text="Barriga Bege:">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Label fx:id="rizard3" prefHeight="17.0" prefWidth="150.0" text="Asas Verdes:">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" />
+                     </VBox.margin>
+                  </TitledPane>
+                  <TitledPane animated="false" text="Classificação por Aprendizagem Baysiana (Naive Bayes)">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="80.0" prefWidth="388.0">
+                           <children>
+                              <VBox layoutX="10.0" layoutY="10.0" prefHeight="60.0" prefWidth="370.0">
+                                 <children>
+                                    <Label fx:id="naiveBayesMeleon" prefHeight="17.0" prefWidth="200.0" text="Charmeleon:">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="10.0" top="10.0" />
+                                       </VBox.margin>
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="naiveBayesRizard" prefHeight="17.0" prefWidth="200.0" text="Charizard">
+                                       <VBox.margin>
+                                          <Insets left="10.0" />
+                                       </VBox.margin>
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </TitledPane>
+               </children>
+            </VBox>
+         </right>
+         <left>
+            <ScrollPane prefHeight="590.0" prefWidth="420.0" style="-fx-border-color: black;" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="200.0" left="10.0" />
+               </BorderPane.margin>
+               <content>
+                  <ImageView fx:id="imageView" fitHeight="572.0" fitWidth="410.0" pickOnBounds="true" preserveRatio="true" />
+               </content>
+            </ScrollPane>
+         </left>
+      </BorderPane>
+   </children>
 </AnchorPane>

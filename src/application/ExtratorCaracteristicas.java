@@ -47,19 +47,19 @@ public class ExtratorCaracteristicas {
 				}
 				if (i > (h / 2) && isBarrigaBegeClaroMeleon(r, g, b)) {
 					barrigaBegeClaroMeleon++;
-					imagemProcessada.put(i, j, new double[] { 0, 255, 128 });
+		//			imagemProcessada.put(i, j, new double[] { 0, 255, 128 });
 				}
 				if (isCorpoLaranjaRizard(r, g, b)) {
 					corpoLaranjaRizard++;
-					imagemProcessada.put(i, j, new double[] { 0, 255, 255 });
+		//			imagemProcessada.put(i, j, new double[] { 0, 255, 255 });
 				}
 				if (i > (h / 2) && isBarrigaBegeRizard(r, g, b)) {
 					barrigaBegeRizard++;
-					imagemProcessada.put(i, j, new double[] { 0, 255, 255 });
+		//			imagemProcessada.put(i, j, new double[] { 0, 255, 255 });
 				}				
 				if ((i > (h / 3) && (i < (h / 3 + h / 3)) && isAsasVerdesRizard(r, g, b))) {
 					asasVerdesRizard++;
-					imagemProcessada.put(i, j, new double[] { 0, 255, 255 });
+				//	imagemProcessada.put(i, j, new double[] { 0, 255, 255 });
 				}
 			}
 		}
@@ -86,15 +86,30 @@ public class ExtratorCaracteristicas {
 		return caracteristicas;
 	}
 
+	
 	public static boolean isCorpoVermelhoMeleon(double r, double g, double b) {
-		if (b >= 25 && b <= 60 && g >= 20 && g <= 110 && r >= 190 && r <= 245) {
+		
+		double auxB;	
+	//	if	(g>b) {auxB = g - 26;} else { auxB = b -26;}
+		if (b >= 0 && b <= 75 && g >= 0 && g <= 65 &&r >= 164 && r <= 255) {	
 			return true;
 		}
 		return false;
 	}
 
 	public static boolean isBarrigaBegeClaroMeleon(double r, double g, double b) {
-		if (b >= 125 && b <= 225 && g >= 180 && g <= 245 && r >= 200 && r <= 250) {
+		
+		double maxRtoG =  60;
+		double minRtoG = 0;
+		double maxGtoB = 47;
+		double minGtoB =  2;
+		
+		double auxG = r - maxRtoG;
+		double auxB = g - maxGtoB;
+		double difG = auxG + maxRtoG - minRtoG;
+		double difB = auxB + maxGtoB + minGtoB;
+		
+			if ((b >= auxB && b <= difB && g >= auxG && g <= difG && r >= 195 && r <= 255) && (r+g+b <700)){
 			return true;
 		}
 		return false;
@@ -108,12 +123,24 @@ public class ExtratorCaracteristicas {
 	}
 
 	public static boolean isBarrigaBegeRizard(double r, double g, double b) {
-		if (b >= 120 && b <= 150 && g >= 210 && g <= 220 && r >= 230 && r <= 250) {
+
+		double maxRtoG =  52;
+		double minRtoG = 14;
+		double maxGtoB = 115;
+		double minGtoB =  53;
+		
+		double auxG = r - maxRtoG;
+		double auxB = g - maxGtoB;
+		double difG = auxG + maxRtoG + minRtoG;
+		double difB = auxB + maxGtoB - minGtoB;
+
+		
+		if ((b >= auxB && b <= difB && g >= auxG && g <= difG && r >= 201 && r <= 255)){
 			return true;
 		}
 		return false;
 	}
-
+	
 	public static boolean isAsasVerdesRizard(double r, double g, double b) {
 		if (b >= 120 && b <= 145 && g >= 85 && g <= 120 && r >= 30 && r <= 50) {
 			return true;

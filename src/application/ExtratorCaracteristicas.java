@@ -89,7 +89,7 @@ public class ExtratorCaracteristicas {
 	
 	public static boolean isCorpoVermelhoMeleon(double r, double g, double b) {
 		
-		if ((r >= 135 && g<=120 && b<= 105 && r+g+b <=700) && 
+		if ((r >= 135 && g <= 120 && b <= 105 && r+g+b <= 700) && 
 				(( g <= 50 || (r >= 170 && g - 22 <= b )) ||
 						( g <= 62 && r >= 200 )))
 				 {
@@ -117,7 +117,9 @@ public class ExtratorCaracteristicas {
 	}
 
 	public static boolean isCorpoLaranjaRizard(double r, double g, double b) {
-		if (b >= 40 && b <= 70 && g >= 130 && g <= 145 && r >= 230 && r <= 250) {
+		
+		if (r >= 125 && g >= 75 && g <= 180 &&  b <= 160 && r+g+b <= 700 && g - 28 >= b && r - 50 > g)
+				 {
 			return true;
 		}
 		return false;

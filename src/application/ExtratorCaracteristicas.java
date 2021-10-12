@@ -43,7 +43,7 @@ public class ExtratorCaracteristicas {
 
 				if (isCorpoVermelhoMeleon(r, g, b)) {
 					corpoVermelhoMeleon++;
-					imagemProcessada.put(i, j, new double[] { 0, 255, 128 });
+		//			imagemProcessada.put(i, j, new double[] { 0, 255, 128 });
 				}
 				if (i > (h / 2) && isBarrigaBegeClaroMeleon(r, g, b)) {
 					barrigaBegeClaroMeleon++;
@@ -51,7 +51,7 @@ public class ExtratorCaracteristicas {
 				}
 				if (isCorpoLaranjaRizard(r, g, b)) {
 					corpoLaranjaRizard++;
-		//			imagemProcessada.put(i, j, new double[] { 0, 255, 255 });
+					imagemProcessada.put(i, j, new double[] { 0, 255, 255 });
 				}
 				if (i > (h / 2) && isBarrigaBegeRizard(r, g, b)) {
 					barrigaBegeRizard++;
@@ -59,7 +59,7 @@ public class ExtratorCaracteristicas {
 				}				
 				if ((i > (h / 3) && (i < (h / 3 + h / 3)) && isAsasVerdesRizard(r, g, b))) {
 					asasVerdesRizard++;
-				//	imagemProcessada.put(i, j, new double[] { 0, 255, 255 });
+		//			imagemProcessada.put(i, j, new double[] { 0, 255, 255 });
 				}
 			}
 		}
@@ -89,9 +89,10 @@ public class ExtratorCaracteristicas {
 	
 	public static boolean isCorpoVermelhoMeleon(double r, double g, double b) {
 		
-		double auxB;	
-	//	if	(g>b) {auxB = g - 26;} else { auxB = b -26;}
-		if (b >= 0 && b <= 75 && g >= 0 && g <= 65 &&r >= 164 && r <= 255) {	
+		if ((r >= 135 && g<=120 && b<= 105 && r+g+b <=700) && 
+				(( g <= 50 || (r >= 170 && g - 22 <= b )) ||
+						( g <= 62 && r >= 200 )))
+				 {
 			return true;
 		}
 		return false;
@@ -99,10 +100,10 @@ public class ExtratorCaracteristicas {
 
 	public static boolean isBarrigaBegeClaroMeleon(double r, double g, double b) {
 		
-		double maxRtoG =  60;
+		double maxRtoG = 60;
 		double minRtoG = 0;
 		double maxGtoB = 47;
-		double minGtoB =  2;
+		double minGtoB = 2;
 		
 		double auxG = r - maxRtoG;
 		double auxB = g - maxGtoB;
@@ -124,17 +125,16 @@ public class ExtratorCaracteristicas {
 
 	public static boolean isBarrigaBegeRizard(double r, double g, double b) {
 
-		double maxRtoG =  52;
+		double maxRtoG = 52;
 		double minRtoG = 14;
 		double maxGtoB = 115;
-		double minGtoB =  53;
+		double minGtoB = 53;
 		
 		double auxG = r - maxRtoG;
 		double auxB = g - maxGtoB;
 		double difG = auxG + maxRtoG + minRtoG;
 		double difB = auxB + maxGtoB - minGtoB;
 
-		
 		if ((b >= auxB && b <= difB && g >= auxG && g <= difG && r >= 201 && r <= 255)){
 			return true;
 		}

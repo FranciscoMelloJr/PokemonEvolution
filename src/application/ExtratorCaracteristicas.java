@@ -43,11 +43,11 @@ public class ExtratorCaracteristicas {
 
 				if (isCorpoVermelhoMeleon(r, g, b)) {
 					corpoVermelhoMeleon++;
-		//			imagemProcessada.put(i, j, new double[] { 0, 255, 128 });
+					imagemProcessada.put(i, j, new double[] { 0, 255, 128 });
 				}
 				if (i > (h / 2) && isBarrigaBegeClaroMeleon(r, g, b)) {
 					barrigaBegeClaroMeleon++;
-		//			imagemProcessada.put(i, j, new double[] { 0, 255, 128 });
+					imagemProcessada.put(i, j, new double[] { 0, 255, 128 });
 				}
 				if (isCorpoLaranjaRizard(r, g, b)) {
 					corpoLaranjaRizard++;
@@ -55,11 +55,11 @@ public class ExtratorCaracteristicas {
 				}
 				if (i > (h / 2) && isBarrigaBegeRizard(r, g, b)) {
 					barrigaBegeRizard++;
-		//			imagemProcessada.put(i, j, new double[] { 0, 255, 255 });
+					imagemProcessada.put(i, j, new double[] { 0, 255, 255 });
 				}				
-				if ((i > (h / 3) && (i < (h / 3 + h / 3)) && isAsasVerdesRizard(r, g, b))) {
+				if ((i > (h/6) && (i < (h/1.20)) && isAsasVerdesRizard(r, g, b))) {
 					asasVerdesRizard++;
-		//			imagemProcessada.put(i, j, new double[] { 0, 255, 255 });
+					imagemProcessada.put(i, j, new double[] { 0, 255, 255 });
 				}
 			}
 		}
@@ -144,7 +144,7 @@ public class ExtratorCaracteristicas {
 	}
 	
 	public static boolean isAsasVerdesRizard(double r, double g, double b) {
-		if (b >= 120 && b <= 145 && g >= 85 && g <= 120 && r >= 30 && r <= 50) {
+		if ((b <= 175 || (b <= 186 && b <= g + 40) || (b<= 240 && g>= 160 && b >= r + 110)) && g >= 39 && g <= 225 && r <= 96 && g >= r+15 && b >= r+5) {
 			return true;
 		}
 		return false;

@@ -75,7 +75,7 @@ public class ExtratorCaracteristicas {
 		caracteristicas[2] = corpoLaranjaRizard;
 		caracteristicas[3] = barrigaBegeRizard;
 		caracteristicas[4] = asasVerdesRizard;
-		caracteristicas[5] = f.getName().charAt(0) == 'b' ? 0 : 1;
+		caracteristicas[5] = f.getName().charAt(4) == 'm' ? 0 : 1;
 		if (exibeImagem) {
 			HighGui.imshow("Imagem original", imagemOriginal);
 			HighGui.imshow("Imagem processada", imagemProcessada);

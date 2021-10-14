@@ -51,7 +51,7 @@ public class PrincipalController {
 				rizard3.setText("Asas Verdes: "  +df.format(caracteristicasImgSel[4]));
 			}
 		}
-		
+	
 		private File buscaImg() {
 			FileChooser fileChooser = new FileChooser();
 			fileChooser.getExtensionFilters().add(new 

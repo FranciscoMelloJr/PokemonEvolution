@@ -19,6 +19,8 @@ public class PrincipalController {
 	@FXML private Label rizard3;
 	@FXML private Label naiveBayesMeleon;
 	@FXML private Label naiveBayesRizard;
+	@FXML private Label j48Meleon;
+	@FXML private Label j48Rizard;
 
 	private DecimalFormat df = new DecimalFormat("##0.0000");
 	private double[] caracteristicasImgSel = {0,0,0,0,0};
@@ -26,8 +28,11 @@ public class PrincipalController {
 	@FXML
 		public void classificar() {
 			double[] nb = AprendizagemBayesiana.naiveBayes(caracteristicasImgSel);
+			double[] j48 = ArvoresDeDecisao.j48(caracteristicasImgSel);
 			naiveBayesMeleon.setText("Charmeleon: "+df.format(nb[0])+"%");
 			naiveBayesRizard.setText("Charizard: "+df.format(nb[1])+"%");
+			j48Meleon.setText("Charmeleon: "+df.format(j48[0])+"%");
+			j48Rizard.setText("Charizard: "+df.format(j48[1])+"%");
 		}
 	
 	@FXML

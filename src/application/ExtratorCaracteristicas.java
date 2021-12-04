@@ -235,7 +235,7 @@ public class ExtratorCaracteristicas {
 		File diretorio = new File("src\\imagens");
 		File[] arquivos = diretorio.listFiles();
 
-		double[][] caracteristicas = new double[471][9];
+		double[][] caracteristicas = new double[593][9];
 
 		int cont = -1;
 		for (File imagem : arquivos) {

@@ -15,13 +15,16 @@ public class ExtratorCaracteristicas {
 
 	public static double[] extraiCaracteristicas(File f, boolean exibeImagem) {
 
-		double[] caracteristicas = new double[6];
+		double[] caracteristicas = new double[9];
 
 		double corpoVermelhoMeleon = 0;
 		double barrigaBegeClaroMeleon = 0;
 		double corpoLaranjaRizard = 0;
 		double barrigaBegeRizard = 0;
 		double asasVerdesRizard = 0;
+		double corpoPretoMega = 0;
+		double barrigaAzulClaroMega = 0;
+		double ChamaAzulMega = 0;
 
 		Image img = new Image(f.toURI().toString());
 		PixelReader pr = img.getPixelReader();
@@ -56,10 +59,22 @@ public class ExtratorCaracteristicas {
 				if (i > (h / 2) && isBarrigaBegeRizard(r, g, b)) {
 					barrigaBegeRizard++;
 					imagemProcessada.put(i, j, new double[] { 0, 255, 255 });
-				}				
-				if ((i > (h/6) && (i < (h/1.20)) && isAsasVerdesRizard(r, g, b))) {
+				}
+				if ((i > (h / 6) && (i < (h / 1.20)) && isAsasVerdesRizard(r, g, b))) {
 					asasVerdesRizard++;
 					imagemProcessada.put(i, j, new double[] { 0, 255, 255 });
+				}
+				if (isCorpoPretoMega(r, g, b)) {
+					corpoVermelhoMeleon++;
+					imagemProcessada.put(i, j, new double[] { 0, 255, 0 });
+				}
+				if (isChamaAzulMega(r, g, b)) {
+					corpoVermelhoMeleon++;
+					imagemProcessada.put(i, j, new double[] { 0, 255, 0 });
+				}
+				if (i > (h / 2) && isBarrigaAzulClaroMega(r, g, b)) {
+					barrigaBegeRizard++;
+					imagemProcessada.put(i, j, new double[] { 0, 255, 0 });
 				}
 			}
 		}
@@ -69,57 +84,84 @@ public class ExtratorCaracteristicas {
 		corpoLaranjaRizard = (corpoLaranjaRizard / (w * h)) * 100;
 		barrigaBegeRizard = (barrigaBegeRizard / (w * h)) * 100;
 		asasVerdesRizard = (asasVerdesRizard / (w * h)) * 100;
+		corpoPretoMega = (corpoPretoMega / (w * h)) * 100;
+		barrigaAzulClaroMega = (barrigaAzulClaroMega / (w * h)) * 100;
+		ChamaAzulMega = (ChamaAzulMega / (w * h)) * 100;
 
 		caracteristicas[0] = corpoVermelhoMeleon;
 		caracteristicas[1] = barrigaBegeClaroMeleon;
 		caracteristicas[2] = corpoLaranjaRizard;
 		caracteristicas[3] = barrigaBegeRizard;
 		caracteristicas[4] = asasVerdesRizard;
-		caracteristicas[5] = f.getName().charAt(4) == 'm' ? 0 : 1;
+		caracteristicas[5] = corpoPretoMega;
+		caracteristicas[6] = barrigaAzulClaroMega;
+		caracteristicas[7] = ChamaAzulMega;
+		caracteristicas[8] = identificador(f);
+
 		if (exibeImagem) {
 			HighGui.imshow("Imagem original", imagemOriginal);
 			HighGui.imshow("Imagem processada", imagemProcessada);
-
 			HighGui.waitKey(0);
 		}
-
 		return caracteristicas;
 	}
 
-	
+	public static double identificador(File f) {
+
+		if (f.getName().charAt(4) == 'm') {
+			return 0;
+		} else if (f.getName().charAt(4) == 'i') {
+			return 1;
+		} else
+			return 2;
+	}
+
+	public static String definirClasse(Double number) {
+
+		int count = number.intValue();
+
+		switch (count) {
+
+		case 0:
+			return "Charmeleon";
+		case 1:
+			return "Charizard";
+		case 2:
+			return "Mega";
+		}
+		return null;
+	}
+
 	public static boolean isCorpoVermelhoMeleon(double r, double g, double b) {
-		
-		if ((r >= 135 && g <= 120 && b <= 105 && r+g+b <= 700) && 
-				(( g <= 50 || (r >= 170 && g - 22 <= b )) ||
-						( g <= 62 && r >= 200 )))
-				 {
+
+		if ((r >= 135 && g <= 120 && b <= 105 && r + g + b <= 700)
+				&& ((g <= 50 || (r >= 170 && g - 22 <= b)) || (g <= 62 && r >= 200))) {
 			return true;
 		}
 		return false;
 	}
 
 	public static boolean isBarrigaBegeClaroMeleon(double r, double g, double b) {
-		
+
 		double maxRtoG = 60;
 		double minRtoG = 0;
 		double maxGtoB = 47;
 		double minGtoB = 2;
-		
+
 		double auxG = r - maxRtoG;
 		double auxB = g - maxGtoB;
 		double difG = auxG + maxRtoG - minRtoG;
 		double difB = auxB + maxGtoB + minGtoB;
-		
-			if ((b >= auxB && b <= difB && g >= auxG && g <= difG && r >= 195 && r <= 255) && (r+g+b <700)){
+
+		if ((b >= auxB && b <= difB && g >= auxG && g <= difG && r >= 195 && r <= 255) && (r + g + b < 700)) {
 			return true;
 		}
 		return false;
 	}
 
 	public static boolean isCorpoLaranjaRizard(double r, double g, double b) {
-		
-		if (r >= 125 && g >= 75 && g <= 180 &&  b <= 160 && r+g+b <= 700 && g - 28 >= b && r - 50 > g)
-				 {
+
+		if (r >= 125 && g >= 75 && g <= 180 && b <= 160 && r + g + b <= 700 && g - 28 >= b && r - 50 > g) {
 			return true;
 		}
 		return false;
@@ -131,20 +173,45 @@ public class ExtratorCaracteristicas {
 		double minRtoG = 14;
 		double maxGtoB = 115;
 		double minGtoB = 53;
-		
+
 		double auxG = r - maxRtoG;
 		double auxB = g - maxGtoB;
 		double difG = auxG + maxRtoG + minRtoG;
 		double difB = auxB + maxGtoB - minGtoB;
 
-		if ((b >= auxB && b <= difB && g >= auxG && g <= difG && r >= 201 && r <= 255)){
+		if ((b >= auxB && b <= difB && g >= auxG && g <= difG && r >= 201 && r <= 255)) {
+			return true;
+		}
+		return false;
+	}
+
+	public static boolean isAsasVerdesRizard(double r, double g, double b) {
+		if ((b <= 175 || (b <= 186 && b <= g + 40) || (b <= 240 && g >= 160 && b >= r + 110)) && g >= 39 && g <= 225
+				&& r <= 96 && g >= r + 15 && b >= r + 5) {
+			return true;
+		}
+		return false;
+	}
+
+	public static boolean isCorpoPretoMega(double r, double g, double b) {
+
+		if ((b >= 45 && b <= 130 && g >= 45 && g <= 130 && r >= 45 && r <= 130) && (r <= g + 5) && (g <= r + 5)) {
+			return true;
+		}
+		return false;
+	}
+
+	public static boolean isBarrigaAzulClaroMega(double r, double g, double b) {
+
+		if ((b >= 230 && b <= 250 && g >= 200 && g <= 225 && r >= 100 && r <= 200)) {
 			return true;
 		}
 		return false;
 	}
 	
-	public static boolean isAsasVerdesRizard(double r, double g, double b) {
-		if ((b <= 175 || (b <= 186 && b <= g + 40) || (b<= 240 && g>= 160 && b >= r + 110)) && g >= 39 && g <= 225 && r <= 96 && g >= r+15 && b >= r+5) {
+	public static boolean isChamaAzulMega(double r, double g, double b) {
+
+		if ((b >= 230 && b <= 250 && g >= 200 && g <= 225) && (r >= 25 && r <= 120) || (r>=200)) {
 			return true;
 		}
 		return false;
@@ -158,28 +225,34 @@ public class ExtratorCaracteristicas {
 		exportacao += "@attribute corpo_laranja_charizard real\n";
 		exportacao += "@attribute barriga_bege_charizard real\n";
 		exportacao += "@attribute asas_verdes_charizard real\n";
-		exportacao += "@attribute classe {Charmeleon, Charizard}\n\n";
+		exportacao += "@attribute corpo_preto_mega real\n";
+		exportacao += "@attribute barriga_azul_claro_mega real\n";
+		exportacao += "@attribute chama_azul_mega real\n";
+		exportacao += "@attribute classe {Charmeleon, Charizard, Mega}\n\n";
 		exportacao += "@data\n";
 
 		File diretorio = new File("src\\imagens");
 		File[] arquivos = diretorio.listFiles();
 
-		double[][] caracteristicas = new double[405][6];
+		double[][] caracteristicas = new double[471][9];
 
 		int cont = -1;
 		for (File imagem : arquivos) {
 			cont++;
 			caracteristicas[cont] = extraiCaracteristicas(imagem, exibeImagem);
 
-			String classe = caracteristicas[cont][5] == 0 ? "Charmeleon" : "Charizard";
+			String classe = definirClasse(caracteristicas[cont][8]);
 
-			System.out.println("Corpo Vermelho Charmeleon: " + caracteristicas[cont][0] + " - Barriga Bege Claro Charmeleon: "
-					+ caracteristicas[cont][1] + " - Corpo Laranja Charizard: " + caracteristicas[cont][2] + " - Barriga Bege Charizard: "
-					+ caracteristicas[cont][3] + " - Asas Verdes Charizard: " + caracteristicas[cont][4] + " - Classe: "
-					+ classe);
+			System.out.println("Corpo Vermelho Charmeleon: " + caracteristicas[cont][0]
+					+ " - Barriga Bege Claro Charmeleon: " + caracteristicas[cont][1] + " - Corpo Laranja Charizard: "
+					+ caracteristicas[cont][2] + " - Barriga Bege Charizard: " + caracteristicas[cont][3]
+					+ " - Asas Verdes Charizard: " + caracteristicas[cont][4] + " - Corpo Preto Mega: "
+					+ caracteristicas[cont][5] + " - Barriga Azul Claro Mega: " + caracteristicas[cont][6]
+					+ " - Chama Azul Mega: " + caracteristicas[cont][7] + " - Classe: " + classe);
 
 			exportacao += caracteristicas[cont][0] + "," + caracteristicas[cont][1] + "," + caracteristicas[cont][2]
-					+ "," + caracteristicas[cont][3] + "," + caracteristicas[cont][4] +  "," + classe + "\n";
+					+ "," + caracteristicas[cont][3] + "," + caracteristicas[cont][4] + "," + caracteristicas[cont][5]
+					+ "," + caracteristicas[cont][6] + "," + caracteristicas[cont][7] + "," + classe + "\n";
 		}
 
 		try {

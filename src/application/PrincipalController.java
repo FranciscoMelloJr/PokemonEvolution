@@ -37,7 +37,7 @@ public class PrincipalController {
 	
 	@FXML
 	public void extrair() {
-		ExtratorCaracteristicas.extrair(false);
+		ExtratorCaracteristicas.extrair(true);
 }
 	
 	@FXML

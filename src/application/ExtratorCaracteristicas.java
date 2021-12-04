@@ -68,14 +68,15 @@ public class ExtratorCaracteristicas {
 					corpoPretoMega++;
 					imagemProcessada.put(i, j, new double[] { 0, 0, 255 });
 				}
+				if (i > (h / 2) && isBarrigaAzulClaroMega(r, g, b)) {
+				barrigaAzulClaroMega++;
+				imagemProcessada.put(i, j, new double[] { 0, 0, 255 });
+			}
 				if (isChamaAzulMega(r, g, b)) {
 					ChamaAzulMega++;
 					imagemProcessada.put(i, j, new double[] { 0, 0, 255 });
 				}
-				if (i > (h / 2) && isBarrigaAzulClaroMega(r, g, b)) {
-					barrigaAzulClaroMega++;
-					imagemProcessada.put(i, j, new double[] { 0, 0, 255 });
-				}
+
 			}
 		}
 
@@ -195,7 +196,7 @@ public class ExtratorCaracteristicas {
 
 	public static boolean isCorpoPretoMega(double r, double g, double b) {
 
-		if ((b >= 45 && b <= 130 && g >= 45 && g <= 130 && r >= 45 && r <= 130) && (r <= g + 5) && (g <= r + 5)) {
+		if ((b >= 40 && b <= 150 && g >= 25 && g <= 150 && r >= 10 && r <= 150) && (b >= g-20) && (r >= g-20)) {
 			return true;
 		}
 		return false;
@@ -203,15 +204,15 @@ public class ExtratorCaracteristicas {
 
 	public static boolean isBarrigaAzulClaroMega(double r, double g, double b) {
 
-		if ((b >= 230 && b <= 250 && g >= 200 && g <= 225 && r >= 100 && r <= 200)) {
+		if ((b >= 220 && g >= 170 && r >= 120 && r <= 200)) {
 			return true;
 		}
 		return false;
 	}
-	
+
 	public static boolean isChamaAzulMega(double r, double g, double b) {
 
-		if ((b >= 230 && b <= 250 && g >= 200 && g <= 225) && (r >= 25 && r <= 120) || (r>=200)) {
+		if (b >= 220 && g >= 150 && (r <= 120 || r >= 200) && (r + g + b < 700)) {
 			return true;
 		}
 		return false;

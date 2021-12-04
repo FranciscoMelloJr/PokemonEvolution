@@ -59,7 +59,7 @@ public class PrincipalController {
 
 	@FXML
 	public void extrair() {
-		ExtratorCaracteristicas.extrair(true);
+		ExtratorCaracteristicas.extrair(false);
 	}
 
 	@FXML

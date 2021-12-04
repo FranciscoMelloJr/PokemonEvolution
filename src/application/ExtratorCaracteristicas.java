@@ -44,38 +44,38 @@ public class ExtratorCaracteristicas {
 				double g = cor.getGreen() * 255;
 				double b = cor.getBlue() * 255;
 
-//				if (isCorpoVermelhoMeleon(r, g, b)) {
-//					corpoVermelhoMeleon++;
-//					imagemProcessada.put(i, j, new double[] { 0, 255, 128 });
-//				}
-//				if (i > (h / 2) && isBarrigaBegeClaroMeleon(r, g, b)) {
-//					barrigaBegeClaroMeleon++;
-//					imagemProcessada.put(i, j, new double[] { 0, 255, 128 });
-//				}
-//				if (isCorpoLaranjaRizard(r, g, b)) {
-//					corpoLaranjaRizard++;
-//					imagemProcessada.put(i, j, new double[] { 0, 255, 255 });
-//				}
-//				if (i > (h / 2) && isBarrigaBegeRizard(r, g, b)) {
-//					barrigaBegeRizard++;
-//					imagemProcessada.put(i, j, new double[] { 0, 255, 255 });
-//				}
-//				if ((i > (h / 6) && (i < (h / 1.20)) && isAsasVerdesRizard(r, g, b))) {
-//					asasVerdesRizard++;
-//					imagemProcessada.put(i, j, new double[] { 0, 255, 255 });
-//				}
-				if (isCorpoPretoMega(r, g, b)) {
+				if (isCorpoVermelhoMeleon(r, g, b)) {
 					corpoVermelhoMeleon++;
+					imagemProcessada.put(i, j, new double[] { 0, 255, 128 });
+				}
+				if (i > (h / 2) && isBarrigaBegeClaroMeleon(r, g, b)) {
+					barrigaBegeClaroMeleon++;
+					imagemProcessada.put(i, j, new double[] { 0, 255, 128 });
+				}
+				if (isCorpoLaranjaRizard(r, g, b)) {
+					corpoLaranjaRizard++;
+					imagemProcessada.put(i, j, new double[] { 0, 255, 255 });
+				}
+				if (i > (h / 2) && isBarrigaBegeRizard(r, g, b)) {
+					barrigaBegeRizard++;
+					imagemProcessada.put(i, j, new double[] { 0, 255, 255 });
+				}
+				if ((i > (h / 6) && (i < (h / 1.20)) && isAsasVerdesRizard(r, g, b))) {
+					asasVerdesRizard++;
+					imagemProcessada.put(i, j, new double[] { 0, 255, 255 });
+				}
+				if (isCorpoPretoMega(r, g, b)) {
+					corpoPretoMega++;
 					imagemProcessada.put(i, j, new double[] { 0, 0, 255 });
 				}
-//				if (isChamaAzulMega(r, g, b)) {
-//					corpoVermelhoMeleon++;
-//					imagemProcessada.put(i, j, new double[] { 0, 0, 255 });
-//				}
-//				if (i > (h / 2) && isBarrigaAzulClaroMega(r, g, b)) {
-//					barrigaBegeRizard++;
-//					imagemProcessada.put(i, j, new double[] { 0, 0, 255 });
-//				}
+				if (isChamaAzulMega(r, g, b)) {
+					ChamaAzulMega++;
+					imagemProcessada.put(i, j, new double[] { 0, 0, 255 });
+				}
+				if (i > (h / 2) && isBarrigaAzulClaroMega(r, g, b)) {
+					barrigaAzulClaroMega++;
+					imagemProcessada.put(i, j, new double[] { 0, 0, 255 });
+				}
 			}
 		}
 

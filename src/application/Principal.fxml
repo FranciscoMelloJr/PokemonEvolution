@@ -13,9 +13,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PrincipalController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PrincipalController">
    <children>
-      <BorderPane prefHeight="840.0" prefWidth="840.0">
+      <BorderPane prefHeight="768.0" prefWidth="1024.0">
          <top>
             <HBox prefHeight="50.0" prefWidth="840.0" BorderPane.alignment="CENTER">
                <children>
@@ -47,18 +47,18 @@
             </HBox>
          </top>
          <right>
-            <VBox maxHeight="570.0" prefHeight="561.0" prefWidth="401.0" BorderPane.alignment="CENTER">
+            <VBox maxHeight="668.0" prefHeight="668.0" prefWidth="489.0" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets bottom="250.0" left="5.0" right="10.0" top="5.0" />
                </BorderPane.margin>
                <children>
-                  <TitledPane animated="false" text="Caracteristícas">
+                  <TitledPane animated="false" prefHeight="140.0" prefWidth="480.0" text="Caracteristícas">
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="125.0" prefWidth="388.0">
                            <children>
-                              <HBox layoutX="12.0" layoutY="10.0" prefHeight="110.0" prefWidth="360.0">
+                              <HBox layoutX="3.0" layoutY="5.0" prefHeight="120.0" prefWidth="475.0">
                                  <children>
-                                    <VBox prefHeight="160.0" prefWidth="180.0">
+                                    <VBox prefHeight="120.0" prefWidth="157.0">
                                        <children>
                                           <Label text="CHARMELEON">
                                              <font>
@@ -85,7 +85,7 @@
                                           </Label>
                                        </children>
                                     </VBox>
-                                    <VBox prefHeight="104.0" prefWidth="180.0">
+                                    <VBox prefHeight="120.0" prefWidth="157.0">
                                        <children>
                                           <Label text="CHARIZARD">
                                              <font>
@@ -112,6 +112,33 @@
                                           </Label>
                                        </children>
                                     </VBox>
+                                    <VBox prefHeight="120.0" prefWidth="157.0">
+                                       <children>
+                                          <Label text="MEGA">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Label fx:id="mega1" prefHeight="17.0" prefWidth="150.0" text="Corpo Preto:">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Label fx:id="mega2" prefHeight="17.0" prefWidth="150.0" text="Barriga Azul Claro:">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Label fx:id="mega3" prefHeight="17.0" prefWidth="150.0" text="Chama Azul:">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                       </children>
+                                    </VBox>
                                  </children>
                               </HBox>
                            </children>
@@ -121,11 +148,11 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" />
                      </VBox.margin>
                   </TitledPane>
-                  <TitledPane animated="false" text="Classificação por Aprendizagem Baysiana (Naive Bayes)">
+                  <TitledPane animated="false" prefHeight="120.0" prefWidth="479.0" text="Classificação por Aprendizagem Baysiana (Naive Bayes)">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="80.0" prefWidth="388.0">
                            <children>
-                              <VBox layoutX="10.0" layoutY="10.0" prefHeight="60.0" prefWidth="370.0">
+                              <VBox layoutX="2.0" layoutY="3.0" prefHeight="89.0" prefWidth="473.0">
                                  <children>
                                     <Label fx:id="naiveBayesMeleon" prefHeight="17.0" prefWidth="200.0" text="Charmeleon:">
                                        <VBox.margin>
@@ -135,13 +162,21 @@
                                           <Font name="System Bold" size="12.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="naiveBayesRizard" prefHeight="17.0" prefWidth="200.0" text="Charizard">
+                                    <Label fx:id="naiveBayesRizard" prefHeight="17.0" prefWidth="200.0" text="Charizard:">
                                        <VBox.margin>
                                           <Insets left="10.0" />
                                        </VBox.margin>
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font>
+                                    </Label>
+                                    <Label fx:id="naiveBayesMega" prefHeight="17.0" prefWidth="200.0" text="Mega:">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets left="10.0" top="10.0" />
+                                       </VBox.margin>
                                     </Label>
                                  </children>
                               </VBox>
@@ -152,11 +187,11 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </VBox.margin>
                   </TitledPane>
-                  <TitledPane animated="false" text="Classificação por Árvore de Decisão J48">
+                  <TitledPane animated="false" prefHeight="120.0" text="Classificação por Árvore de Decisão J48">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="80.0" prefWidth="388.0">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="129.0" prefWidth="477.0">
                            <children>
-                              <VBox layoutX="10.0" layoutY="10.0" prefHeight="60.0" prefWidth="370.0">
+                              <VBox layoutX="2.0" layoutY="-1.0" prefHeight="94.0" prefWidth="476.0">
                                  <children>
                                     <Label fx:id="j48Meleon" prefHeight="17.0" prefWidth="200.0" text="Charmeleon:">
                                        <VBox.margin>
@@ -166,13 +201,21 @@
                                           <Font name="System Bold" size="12.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="j48Rizard" prefHeight="17.0" prefWidth="200.0" text="Charizard">
+                                    <Label fx:id="j48Rizard" prefHeight="17.0" prefWidth="200.0" text="Charizard:">
                                        <VBox.margin>
                                           <Insets left="10.0" />
                                        </VBox.margin>
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font>
+                                    </Label>
+                                    <Label fx:id="j48Mega" prefHeight="17.0" prefWidth="200.0" text="Mega:">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets left="10.0" top="10.0" />
+                                       </VBox.margin>
                                     </Label>
                                  </children>
                               </VBox>
@@ -183,9 +226,9 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </VBox.margin>
                   </TitledPane>
-                  <ImageView fitHeight="126.0" fitWidth="382.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="183.0" fitWidth="334.0" pickOnBounds="true" preserveRatio="true">
                      <VBox.margin>
-                        <Insets left="100.0" top="20.0" />
+                        <Insets left="75.0" top="20.0" />
                      </VBox.margin>
                      <image>
                         <Image url="@../banner/banner.png" />
@@ -195,12 +238,12 @@
             </VBox>
          </right>
          <left>
-            <ScrollPane prefHeight="590.0" prefWidth="420.0" style="-fx-border-color: black;" BorderPane.alignment="CENTER">
+            <ScrollPane minHeight="668.0" prefHeight="900.0" prefWidth="512.0" style="-fx-border-color: black;" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets bottom="200.0" left="10.0" />
                </BorderPane.margin>
                <content>
-                  <ImageView fx:id="imageView" fitHeight="572.0" fitWidth="410.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="imageView" fitHeight="664.0" fitWidth="507.0" pickOnBounds="true" preserveRatio="true" />
                </content>
             </ScrollPane>
          </left>

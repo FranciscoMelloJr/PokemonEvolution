@@ -42,19 +42,19 @@ public class PrincipalController {
 	@FXML
 	private Label j48Mega;
 
-	private DecimalFormat df = new DecimalFormat("##0.0000");
+	private DecimalFormat df = new DecimalFormat("##0.00");
 	private double[] caracteristicasImgSel = { 0, 0, 0, 0, 0, 0, 0, 0 };
 
 	@FXML
 	public void classificar() {
 		double[] nb = AprendizagemBayesiana.naiveBayes(caracteristicasImgSel);
 		double[] j48 = ArvoresDeDecisao.j48(caracteristicasImgSel);
-		naiveBayesMeleon.setText("Charmeleon: " + df.format(nb[0]) + "%");
-		naiveBayesRizard.setText("Charizard: " + df.format(nb[1]) + "%");
-		naiveBayesMega.setText("Mega: " + df.format(nb[2]) + "%");
-		j48Meleon.setText("Charmeleon: " + df.format(j48[0]) + "%");
-		j48Rizard.setText("Charizard: " + df.format(j48[1]) + "%");
-		j48Mega.setText("Mega: " + df.format(j48[2]) + "%");
+		naiveBayesMeleon.setText("Charmeleon: " + df.format(nb[0]*100) + "%");
+		naiveBayesRizard.setText("Charizard: " + df.format(nb[1]*100) + "%");
+		naiveBayesMega.setText("Mega: " + df.format(nb[2]*100) + "%");
+		j48Meleon.setText("Charmeleon: " + df.format(j48[0]*(100)) + "%");
+		j48Rizard.setText("Charizard: " + df.format(j48[1]*100) + "%");
+		j48Mega.setText("Mega: " + df.format(j48[2]*100) + "%");
 	}
 
 	@FXML
